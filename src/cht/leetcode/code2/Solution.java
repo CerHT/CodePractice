@@ -41,6 +41,7 @@ public class Solution {
         }
 
         ListNode result = new ListNode(0);
+        // 用以保存当前节点
         ListNode temp = result;
 
         int remainder = 0;
