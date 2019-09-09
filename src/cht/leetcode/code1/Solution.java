@@ -19,11 +19,11 @@ import java.util.Map;
  * @author chenhantao
  * @since 2019/9/9
  */
-public class Code1 {
+public class Solution {
     public static void main(String[] args) {
-        Code1 code1 = new Code1();
+        Solution solution = new Solution();
         long start = System.currentTimeMillis();
-        System.out.println(Arrays.toString(code1.twoSum(new int[]{3, 2, 3}, 6)));
+        System.out.println(Arrays.toString(solution.twoSum(new int[]{3, 2, 3}, 6)));
         System.out.println(System.currentTimeMillis() - start);
     }
 
