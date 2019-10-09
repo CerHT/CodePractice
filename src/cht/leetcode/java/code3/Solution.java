@@ -1,4 +1,4 @@
-package cht.leetcode.code3;
+package cht.leetcode.java.code3;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +26,7 @@ import java.util.Map;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- *
+ * TODO 暂缓
  * @author chenhantao
  * @since 2019/9/9
  */
@@ -34,29 +34,33 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.lengthOfLongestSubstring("pwwkwew"));
+        System.out.println(solution.lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(solution.lengthOfLongestSubstring("bbbbb"));
+        System.out.println(solution.lengthOfLongestSubstring("pwwkew"));
+        System.out.println(solution.lengthOfLongestSubstring("pwiukw"));
+        System.out.println(solution.lengthOfLongestSubstring("dvdf"));
+        System.out.println(solution.lengthOfLongestSubstring("padpef"));
+        System.out.println(solution.lengthOfLongestSubstring("abba"));
     }
 
     public int lengthOfLongestSubstring(String s) {
         if (s.length() == 1) {
             return 1;
         }
-        int result = 1;
 
         Map<String, Integer> map = new HashMap<>(s.length());
-        int index = 0;
+
+        int result = 0;
         int length = 0;
         for (int i = 0; i < s.length(); i++) {
             String temp = String.valueOf(s.charAt(i));
-            if (map.containsKey(temp)) {
-                length = i - index;
-                index = i;
+            if (!map.containsKey(temp)) {
+
             } else {
-                map.put(temp, 0);
-                length++;
+
             }
-            result = Math.max(result, length - index);
+
         }
-        return result;
+        return 0;
     }
 }

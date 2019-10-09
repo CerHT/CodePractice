@@ -1,4 +1,4 @@
-package cht.leetcode.code2;
+package cht.leetcode.java.code2;
 
 /**
  * 单链表定义
