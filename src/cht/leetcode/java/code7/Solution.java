@@ -34,8 +34,8 @@ public class Solution {
         while (x != 0) {
             pos = x % 10;
             x /= 10;
-            z
-        }
 
+        }
+        return 0;
     }
 }
