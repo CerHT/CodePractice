@@ -34,29 +34,32 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
+        System.out.println(solution.lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(solution.lengthOfLongestSubstring("bbbbb"));
         System.out.println(solution.lengthOfLongestSubstring("pwwkwew"));
+        System.out.println(solution.lengthOfLongestSubstring("dvdf"));
+        System.out.println(solution.lengthOfLongestSubstring("pwdddpww"));
     }
 
     public int lengthOfLongestSubstring(String s) {
         if (s.length() == 1) {
             return 1;
         }
-        int result = 1;
-
         Map<String, Integer> map = new HashMap<>(s.length());
-        int index = 0;
+
         int length = 0;
+        int repeat = 0;
+
         for (int i = 0; i < s.length(); i++) {
             String temp = String.valueOf(s.charAt(i));
             if (map.containsKey(temp)) {
-                length = i - index;
-                index = i;
+
             } else {
-                map.put(temp, 0);
+                map.put(temp, i);
                 length++;
             }
-            result = Math.max(result, length - index);
+
         }
-        return result;
+        return 0;
     }
 }
