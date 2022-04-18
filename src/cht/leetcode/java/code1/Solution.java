@@ -27,7 +27,9 @@ public class Solution {
         System.out.println(System.currentTimeMillis() - start);
     }
 
-    // 常规解法
+    /**
+     * 常规解法
+     */
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
         for (int i = 0; i < nums.length - 1; i++) {
