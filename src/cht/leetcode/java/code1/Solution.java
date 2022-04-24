@@ -46,6 +46,8 @@ public class Solution {
 
     /**
      * 两种消耗内存差不多，但是第一种耗时75ms，第二种耗时6ms
+     * 一开始就无脑准备双循环了，结果可以符合题目要求，然后看到提交的记录里有时间贼短的。
+     * 就尝试了一下，map是个好东西
      */
     public int[] twoSumUpdate(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>(nums.length);
