@@ -1,6 +1,8 @@
 package cht.leetcode.java.code3;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -36,11 +38,43 @@ public class Solution {
         //String s = "pwwkew";
         //String s = " ";
         //String s = "dvdf";
-        String s = "bwf";
-        System.out.println(lengthOfLongestSubstring(s));
+        //String s = "abba";
+        String s = "abcabcbb";
+
+        String a = "abcdefghiijklmnopqr";
+        long l1 = System.nanoTime();
+        lengthOfLongestSubstring(a);
+        System.out.println(System.nanoTime() - l1);
+
     }
 
     public static int lengthOfLongestSubstring(String s) {
+        Map<Character, Integer> temp = new HashMap<>(s.length());
+
+        if (s.length() == 1) {
+            return 1;
+        }
+
+        int left = 0, right = 0;
+        int maxLength = 0;
+        while (right < s.length() && left <= right) {
+            Integer integer = temp.putIfAbsent(s.charAt(right), right);
+            if (integer == null) {
+                right++;
+            } else {
+                maxLength = Math.max(maxLength, right - left);
+                // 直接跳到重复的元素后面一位
+                if (left <= integer) {
+                    left = integer + 1;
+                }
+                temp.remove(s.charAt(right));
+            }
+            maxLength = Math.max(maxLength, right - left);
+        }
+        return maxLength;
+    }
+
+    public static int lengthOfLongestSubstring2(String s) {
         Set<Character> temp = new HashSet<>();
 
         int left = 0, right = 0;
@@ -49,6 +83,7 @@ public class Solution {
             if (temp.add(s.charAt(right))) {
                 right++;
             } else {
+                // 这一步相当于把left转移到重复元素的后一位
                 temp.remove(s.charAt(left));
                 left++;
             }
