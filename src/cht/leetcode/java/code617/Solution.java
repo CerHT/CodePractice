@@ -46,8 +46,8 @@ public class Solution {
 
         root1.val += root2.val;
 
-        mergeTrees(root1.left, root2.left);
-        mergeTrees(root1.right, root2.right);
+        root1.left = mergeTrees(root1.left, root2.left);
+        root1.right = mergeTrees(root1.right, root2.right);
 
         return root1;
     }
