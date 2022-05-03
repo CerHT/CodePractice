@@ -1,5 +1,8 @@
 package cht.leetcode.java.code116;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 import cht.leetcode.java.Node;
 
 /**
@@ -45,15 +48,62 @@ import cht.leetcode.java.Node;
 public class Solution {
 
     public Node connect(Node root) {
+
+        connectNode(root);
+        return root;
+    }
+
+    /**
+     * 一层一层的处理
+     * @param node
+     */
+    public void connectNode(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        if (node.left == null) {
+            return;
+        }
+
+        node.left.next = node.right;
+        if (node.next != null) {
+            node.right.next = node.next.left;
+        }
+
+        connectNode(node.left);
+        connectNode(node.right);
+    }
+
+    public Node connectBfs(Node root) {
         if (root == null) {
             return null;
         }
 
-        if (root.left != null) {
-            root.left.next = root.right;
+        Deque<Node> deque = new ArrayDeque<>();
+        deque.add(root);
+
+        while (!deque.isEmpty()) {
+
+            int current = deque.size();
+            for (int i = 0; i < current; i++) {
+                Node temp = deque.poll();
+
+                if (temp == null) {
+                    continue;
+                }
+                // 这里最后一个不能指定next但是需要poll
+                if (i < current - 1) {
+                    temp.next = deque.peek();
+                }
+
+                if (temp.left != null) {
+                    deque.add(temp.left);
+                    deque.add(temp.right);
+                }
+            }
         }
 
-
-
+        return root;
     }
 }
