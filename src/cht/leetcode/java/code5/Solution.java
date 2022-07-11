@@ -32,6 +32,10 @@ package cht.leetcode.java.code5;
  */
 public class Solution {
 
+    public static void main(String[] args) {
+
+    }
+
     public String longestPalindrome(String s) {
         int length = s.length();
         // 一个字符肯定是回文子串
@@ -49,7 +53,7 @@ public class Solution {
         char[] chars = s.toCharArray();
         int maxLength = 1, begin = 0;
         // 从长度为2的子串开始
-        for (int strLen = 2; strLen < length; strLen++) {
+        for (int strLen = 2; strLen <= length; strLen++) {
             for (int left = 0; left < length; left++) {
                 // 计算右界的坐标
                 int right = strLen - 1 + left;
